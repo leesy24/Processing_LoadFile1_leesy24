@@ -15,15 +15,15 @@ void setup() {
   background(0);
   stroke(255);
   //frameRate(15);
-  frameRate(1);
+  frameRate(30);
   lines = loadStrings("/tmp/positions.txt");
 }
 
 void draw() {
   background(0);
   lines = loadStrings("/tmp/positions.txt");
-  println("lines.length = ", lines.length);
-  println("frames = ", frames);
+  //println("lines.length = ", lines.length);
+  //println("frames = ", frames);
   //if (index < lines.length) {
   while (index < lines.length) {
     String[] pieces = split(lines[index], '\t');
@@ -31,12 +31,12 @@ void draw() {
     if (pieces.length == 2) {
       int x, y;
       if (frames % 2 == 0) {
-        x = int(pieces[0]) * 640 / 100;
-        y = int(pieces[1]) * 480 / 100;
+        x = int(pieces[0]);
+        y = int(pieces[1]);
       }
       else {
-        x = int(pieces[1]) * 640 / 100;
-        y = int(pieces[0]) * 480 / 100;
+        x = 640 - int(pieces[0]);
+        y = int(pieces[1]);
       }
       //point(x, y);
       if (px == -1 || py == -1) {
